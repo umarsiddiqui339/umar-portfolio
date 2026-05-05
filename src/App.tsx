@@ -97,17 +97,32 @@ const Magnet: React.FC<MagnetProps> = ({
 };
 
 // Contact Button
+// Contact Button - Fixed for mobile
 const ContactButton: React.FC = () => {
   return (
     <a 
       href="mailto:umisid339@gmail.com" 
-      className="rounded-full px-8 py-3 sm:px-10 sm:py-3.5 md:px-12 md:py-4 text-xs sm:text-sm md:text-base font-medium uppercase tracking-widest text-white transition-all hover:opacity-90 inline-block cursor-pointer"
       style={{ 
+        display: 'inline-block',
         background: "linear-gradient(123deg, #18011F 7%, #B600A8 37%, #7621B0 72%, #BE4C00 100%)",
         boxShadow: "0px 4px 4px rgba(181, 1, 167, 0.25), inset 4px 4px 12px #7721B1",
         outline: "2px solid white",
-        outlineOffset: "-3px"
+        outlineOffset: "-3px",
+        border: "none",
+        borderRadius: "9999px",
+        padding: "0.6rem 1.5rem",
+        fontWeight: "500",
+        textTransform: "uppercase",
+        letterSpacing: "0.1em",
+        color: "white",
+        cursor: "pointer",
+        transition: "all 0.3s ease",
+        fontSize: "clamp(0.7rem, 3vw, 0.85rem)",
+        textDecoration: 'none',
+        whiteSpace: 'nowrap'
       }}
+      onMouseEnter={(e) => e.currentTarget.style.transform = "scale(1.05)"}
+      onMouseLeave={(e) => e.currentTarget.style.transform = "scale(1)"}
     >
       Contact Me
     </a>
@@ -115,137 +130,84 @@ const ContactButton: React.FC = () => {
 };
 
 // Hero Section
+// Hero Section - Fixed for mobile
 const HeroSection: React.FC = () => {
   return (
     <section style={{ 
-      height: '100vh', 
+      minHeight: '100vh', 
       display: 'flex', 
       flexDirection: 'column',
       position: 'relative',
-      overflow: 'hidden'
+      overflow: 'hidden',
+      padding: '1rem'
     }}>
       {/* Navigation */}
       <nav style={{ 
-        position: 'absolute', 
+        position: 'relative',
         top: 0, 
         left: 0, 
         right: 0, 
-        padding: '2rem 3rem',
+        padding: '1rem',
         display: 'flex', 
         justifyContent: 'center',
-        gap: '3rem',
+        gap: '1rem',
         alignItems: 'center',
         zIndex: 20,
         flexWrap: 'wrap'
       }}>
-        <a href="#about" style={{ 
-          color: '#D7E2EA', 
-          fontWeight: '500', 
-          textTransform: 'uppercase', 
-          textDecoration: 'none',
-          fontSize: '1rem',
-          letterSpacing: '0.05em',
-          transition: 'all 0.3s ease',
-          padding: '0.5rem 1rem',
-          borderRadius: '2rem'
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.color = '#BBCCD7';
-          e.currentTarget.style.transform = 'translateY(-2px)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.color = '#D7E2EA';
-          e.currentTarget.style.transform = 'translateY(0)';
-        }}>
-          About
-        </a>
-        <a href="#experience" style={{ 
-          color: '#D7E2EA', 
-          fontWeight: '500', 
-          textTransform: 'uppercase', 
-          textDecoration: 'none',
-          fontSize: '1rem',
-          letterSpacing: '0.05em',
-          transition: 'all 0.3s ease',
-          padding: '0.5rem 1rem',
-          borderRadius: '2rem'
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.color = '#BBCCD7';
-          e.currentTarget.style.transform = 'translateY(-2px)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.color = '#D7E2EA';
-          e.currentTarget.style.transform = 'translateY(0)';
-        }}>
-          Experience
-        </a>
-        <a href="#projects" style={{ 
-          color: '#D7E2EA', 
-          fontWeight: '500', 
-          textTransform: 'uppercase', 
-          textDecoration: 'none',
-          fontSize: '1rem',
-          letterSpacing: '0.05em',
-          transition: 'all 0.3s ease',
-          padding: '0.5rem 1rem',
-          borderRadius: '2rem'
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.color = '#BBCCD7';
-          e.currentTarget.style.transform = 'translateY(-2px)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.color = '#D7E2EA';
-          e.currentTarget.style.transform = 'translateY(0)';
-        }}>
-          Projects
-        </a>
-        <a href="#contact" style={{ 
-          color: '#D7E2EA', 
-          fontWeight: '500', 
-          textTransform: 'uppercase', 
-          textDecoration: 'none',
-          fontSize: '1rem',
-          letterSpacing: '0.05em',
-          transition: 'all 0.3s ease',
-          padding: '0.5rem 1rem',
-          borderRadius: '2rem'
-        }}
-        onMouseEnter={(e) => {
-          e.currentTarget.style.color = '#BBCCD7';
-          e.currentTarget.style.transform = 'translateY(-2px)';
-        }}
-        onMouseLeave={(e) => {
-          e.currentTarget.style.color = '#D7E2EA';
-          e.currentTarget.style.transform = 'translateY(0)';
-        }}>
-          Contact
-        </a>
+        {['About', 'Experience', 'Projects', 'Contact'].map((item) => (
+          <a 
+            key={item}
+            href={`#${item.toLowerCase()}`} 
+            style={{ 
+              color: '#D7E2EA', 
+              fontWeight: '500', 
+              textTransform: 'uppercase', 
+              textDecoration: 'none',
+              fontSize: '0.8rem',
+              letterSpacing: '0.05em',
+              transition: 'all 0.3s ease',
+              padding: '0.4rem 0.8rem',
+              borderRadius: '2rem'
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.color = '#BBCCD7';
+              e.currentTarget.style.transform = 'translateY(-2px)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.color = '#D7E2EA';
+              e.currentTarget.style.transform = 'translateY(0)';
+            }}
+          >
+            {item}
+          </a>
+        ))}
       </nav>
 
-      {/* Main Content - Split Layout */}
+      {/* Main Content - Split Layout (Left Text, Right Portrait) */}
       <div style={{
         display: 'flex',
+        flexDirection: 'row',
         alignItems: 'center',
         justifyContent: 'space-between',
-        padding: '0 5%',
-        gap: '4rem',
+        padding: '2rem 5%',
+        gap: '3rem',
         flex: 1,
-        marginTop: '80px' // To account for navbar
+        flexWrap: 'wrap'
       }}>
         
         {/* Left Side - Text Content */}
         <div style={{ 
           flex: 1,
+          minWidth: '280px',
           textAlign: 'left',
           zIndex: 10
         }}>
           <h1 className="hero-heading" style={{ 
-            fontSize: 'clamp(2.5rem, 5vw, 4.5rem)', 
+            fontSize: 'clamp(2rem, 5vw, 4rem)', 
             fontWeight: 900, 
             textTransform: 'uppercase',
-            marginBottom: '1.5rem',
+            marginBottom: '1rem',
             letterSpacing: '-0.02em',
             lineHeight: 1.2
           }}>
@@ -254,10 +216,10 @@ const HeroSection: React.FC = () => {
           
           <p style={{ 
             color: '#BBCCD7', 
-            fontSize: 'clamp(1.1rem, 2vw, 1.4rem)', 
+            fontSize: 'clamp(1rem, 2vw, 1.3rem)', 
             fontWeight: 300,
-            marginBottom: '2rem',
-            lineHeight: 1.6
+            marginBottom: '1.5rem',
+            lineHeight: 1.5
           }}>
             Mobile Communication & Security Engineer | Backend Developer
           </p>
@@ -265,7 +227,7 @@ const HeroSection: React.FC = () => {
           {/* Short Bio */}
           <p style={{ 
             color: '#D7E2EA', 
-            fontSize: 'clamp(0.9rem, 1.5vw, 1rem)', 
+            fontSize: '0.9rem', 
             opacity: 0.8,
             maxWidth: '500px',
             lineHeight: 1.6,
@@ -277,19 +239,26 @@ const HeroSection: React.FC = () => {
           </p>
           
           {/* CTA Buttons */}
-          <div style={{ display: 'flex', gap: '1rem' }}>
+          <div style={{ 
+            display: 'flex', 
+            flexDirection: 'row',
+            gap: '1rem',
+            alignItems: 'center',
+            flexWrap: 'wrap'
+          }}>
             <ContactButton />
             <a href="#projects" style={{
               display: 'inline-block',
               border: '2px solid #D7E2EA',
               borderRadius: '9999px',
-              padding: '0.75rem 2rem',
+              padding: '0.6rem 1.5rem',
               fontWeight: '500',
               textTransform: 'uppercase',
               letterSpacing: '0.1em',
               color: '#D7E2EA',
               textDecoration: 'none',
-              transition: 'all 0.3s ease'
+              transition: 'all 0.3s ease',
+              fontSize: '0.75rem'
             }}
             onMouseEnter={(e) => {
               e.currentTarget.style.background = 'rgba(215, 226, 234, 0.1)';
@@ -306,8 +275,8 @@ const HeroSection: React.FC = () => {
 
         {/* Right Side - Portrait */}
         <motion.div
-          whileHover={{ y: -10 }}
-          animate={{ y: [0, -5, 0] }}
+          whileHover={{ y: -5 }}
+          animate={{ y: [0, -3, 0] }}
           transition={{ 
             type: "spring", 
             stiffness: 300,
@@ -315,20 +284,21 @@ const HeroSection: React.FC = () => {
           }}
           style={{
             flex: 1,
+            minWidth: '200px',
             display: 'flex',
             justifyContent: 'flex-end',
             alignItems: 'center'
           }}
         >
           <img 
-            src="/src/assets/bitmoji.jpeg" 
+            src="/bitmoji.jpeg" 
             alt="Cartoon Avatar"
             style={{ 
-              width: 'min(35vw, 400px)',
+              width: 'min(35vw, 300px)',
               height: 'auto',
               display: 'block',
-              borderRadius: '2rem',
-              boxShadow: '0 25px 50px rgba(0,0,0,0.4)'
+              borderRadius: '1.5rem',
+              boxShadow: '0 15px 30px rgba(0,0,0,0.3)'
             }}
           />
         </motion.div>
@@ -336,27 +306,25 @@ const HeroSection: React.FC = () => {
 
       {/* Bottom bar */}
       <div style={{ 
-        position: 'absolute', 
+        position: 'relative',
         bottom: 0, 
         left: 0, 
         right: 0, 
-        padding: '2rem 5%',
+        padding: '1rem 5%',
         display: 'flex', 
-        justifyContent: 'space-between', 
-        alignItems: 'flex-end',
+        justifyContent: 'space-between',
+        alignItems: 'center',
+        flexWrap: 'wrap',
+        gap: '0.5rem',
         zIndex: 20,
         borderTop: '1px solid rgba(215, 226, 234, 0.1)'
       }}>
-        <div>
-          <p style={{ color: '#D7E2EA', fontSize: 'clamp(0.7rem, 1.5vw, 0.9rem)', opacity: 0.7 }}>
-            CGPA 3.68 | Backend Developer | Full-Stack Engineer
-          </p>
-        </div>
-        <div style={{ display: 'flex', gap: '1rem' }}>
-          <p style={{ color: '#D7E2EA', fontSize: 'clamp(0.7rem, 1.5vw, 0.9rem)', opacity: 0.7 }}>
-            Available for work
-          </p>
-        </div>
+        <p style={{ color: '#D7E2EA', fontSize: '0.7rem', opacity: 0.7 }}>
+          CGPA 3.68 | Backend Developer | Full-Stack Engineer
+        </p>
+        <p style={{ color: '#D7E2EA', fontSize: '0.7rem', opacity: 0.7 }}>
+          Available for work
+        </p>
       </div>
     </section>
   );
@@ -1049,9 +1017,6 @@ const ExperienceSection: React.FC = () => {
         {/* Mobile Version (Stacked) - Visible only on mobile */}
         <div style={{
           display: 'none',
-          '@media (max-width: 768px)': {
-            display: 'block'
-          }
         }}>
           {experiences.map((exp, idx) => (
             <motion.div
