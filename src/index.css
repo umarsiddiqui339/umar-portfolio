@@ -297,3 +297,128 @@ html, body, #root {
   .lg\:text-\[1\.4rem\] { font-size: 1.4rem; }
   .lg\:text-xl { font-size: 1.25rem; }
 }
+/* Mobile Optimizations */
+@media (max-width: 768px) {
+  /* Better touch targets */
+  a, button, [role="button"] {
+    min-height: 40px;
+    min-width: 40px;
+  }
+  
+  /* Improved spacing */
+  section {
+    padding: 2rem 1rem !important;
+  }
+  
+  /* Scroll padding for anchor links */
+  html {
+    scroll-padding-top: 60px;
+    scroll-behavior: smooth;
+  }
+  
+  /* Better card spacing on mobile */
+  .grid-cols-2 {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  /* Project grid on mobile */
+  .projects-grid {
+    grid-template-columns: 1fr !important;
+  }
+  
+  /* Section titles smaller on mobile */
+  .hero-heading {
+    font-size: 2rem !important;
+  }
+  
+  /* Fix button text size */
+  button, .btn-primary, .btn-outline {
+    font-size: 0.7rem !important;
+    padding: 0.5rem 1rem !important;
+  }
+  
+  /* Navigation links smaller */
+  nav a {
+    font-size: 0.7rem !important;
+    padding: 0.3rem 0.6rem !important;
+  }
+  
+  /* Contact cards stack on mobile */
+  .contact-grid {
+    grid-template-columns: 1fr !important;
+  }
+}
+
+/* Small phone optimizations */
+@media (max-width: 480px) {
+  .hero-heading {
+    font-size: 1.5rem !important;
+  }
+  
+  /* Stack everything */
+  .flex-row {
+    flex-direction: column !important;
+  }
+  
+  /* Full width buttons */
+  .full-width-mobile {
+    width: 100% !important;
+  }
+  
+  /* Smaller text for bottom bar */
+  .bottom-bar {
+    font-size: 0.6rem !important;
+  }
+}
+
+/* Improve touch targets for mobile */
+@media (hover: none) and (pointer: coarse) {
+  a, button, .clickable {
+    padding: 12px 16px !important;
+  }
+  
+  /* Remove hover effects on mobile */
+  .hover-scale:hover,
+  .hover-glow:hover,
+  .hover-lift:hover {
+    transform: none !important;
+  }
+}
+/* Responsive buttons */
+@media (min-width: 480px) {
+  .hero-buttons {
+    flex-direction: row !important;
+    justify-content: center;
+  }
+}
+
+/* Fix for ContactButton on mobile */
+@media (max-width: 480px) {
+  .hero-buttons a {
+    white-space: normal !important;
+    text-align: center;
+    font-size: 0.7rem !important;
+    padding: 0.5rem 1rem !important;
+  }
+}
+/* Mobile Responsive for Hero Section */
+@media (max-width: 768px) {
+  /* Stack layout on mobile */
+  .hero-content {
+    flex-direction: column !important;
+    text-align: center !important;
+  }
+  
+  .hero-text {
+    text-align: center !important;
+  }
+  
+  .hero-buttons {
+    justify-content: center !important;
+  }
+  
+  .hero-portrait {
+    justify-content: center !important;
+  }
+}
